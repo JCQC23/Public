@@ -1,0 +1,465 @@
+openapi: 3.0.0
+info:
+  title: Quorum Cyber MISP Server Open API Specification
+  version: 1.0.0
+  description: |
+    Open API Specification for the Quorum Cyber MISP Server for use with Copilot for Security. This API request a API token that can be generated from your account profile. 
+    Examples of operations include:
+    - Get all attributes
+    - Get all events
+    - Get all feeds
+    - Get all organisations
+    - Get all sharing groups
+    - Get all taxonomies
+    - Get all tags
+    - Get all warning lists
+    - Get all notice lists
+
+    These operations are used to retrieve data from the MISP server for use in Copilot for Security in Read Only operations. 
+servers:
+  - url: https://qcybermisp.uksouth.cloudapp.azure.com
+paths:
+  /analystData/index/{analystType}:
+    get:
+      summary: Get index of analyst data by type
+      parameters:
+        - name: analystType
+          in: path
+          required: true
+          description: Type of analyst data
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+  /analystData/view/{analystType}/{analystDataID}:
+    get:
+      summary: View analyst data by type and ID
+      parameters:
+        - name: analystType
+          in: path
+          required: true
+          description: Type of analyst data
+          schema:
+            type: string
+        - name: analystDataID
+          in: path
+          required: true
+          description: ID of the analyst data
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+  /attributes/restSearch:
+    get:
+      summary: Search for attributes
+      responses:
+        '200':
+          description: Successful operation
+  /attributes/restore/{attributeId}:
+    get:
+      summary: Restore attribute by ID
+      parameters:
+        - name: attributeId
+          in: path
+          required: true
+          description: ID of the attribute
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+  /attributes:
+    get:
+      summary: Get all attributes
+      responses:
+        '200':
+          description: Successful operation
+  /attributes/view/{attributeId}:
+    get:
+      summary: View attribute by ID
+      parameters:
+        - name: attributeId
+          in: path
+          required: true
+          description: ID of the attribute
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+  /attributes/attributeStatistics/{context}/{percentage}:
+    get:
+      summary: Get attribute statistics
+      parameters:
+        - name: context
+          in: path
+          required: true
+          description: Context for statistics
+          schema:
+            type: string
+        - name: percentage
+          in: path
+          required: true
+          description: Percentage value for statistics
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful operation
+  /attributes/describeTypes:
+    get:
+      summary: Describe attribute types
+      responses:
+        '200':
+          description: Successful operation
+  /eventReports/view/{eventReportId}:
+    get:
+      summary: View event report by ID
+      parameters:
+        - name: eventReportId
+          in: path
+          required: true
+          description: ID of the event report
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+  /events/restSearch:
+    get:
+      summary: Search for events
+      responses:
+        '200':
+          description: Successful operation
+  /events:
+    get:
+      summary: Get all events
+      responses:
+        '200':
+          description: Successful operation
+  /events/index:
+    get:
+      summary: Get event index
+      responses:
+        '200':
+          description: Successful operation
+  /events/view/{eventId}:
+    get:
+      summary: View event by ID
+      parameters:
+        - name: eventId
+          in: path
+          required: true
+          description: ID of the event
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+  /organisations:
+    get:
+      summary: Get all organisations
+      responses:
+        '200':
+          description: Successful operation
+  /organisations/view/{organisationId}:
+    get:
+      summary: View organisation by ID
+      parameters:
+        - name: organisationId
+          in: path
+          required: true
+          description: ID of the organisation
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+  /sharing_groups:
+    get:
+      summary: Get all sharing groups
+      responses:
+        '200':
+          description: Successful operation
+  /sharing_groups/view/{sharingGroupId}:
+    get:
+      summary: View sharing group by ID
+      parameters:
+        - name: sharingGroupId
+          in: path
+          required: true
+          description: ID of the sharing group
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+  /taxonomies:
+    get:
+      summary: Get all taxonomies
+      responses:
+        '200':
+          description: Successful operation
+  /taxonomies/view/{taxonomyIdParameter}:
+    get:
+      summary: View taxonomy by ID
+      parameters:
+        - name: taxonomyIdParameter
+          in: path
+          required: true
+          description: ID of the taxonomy
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+  /taxonomies/enable/{taxonomyIdParameter}:
+    get:
+      summary: Enable taxonomy by ID
+      parameters:
+        - name: taxonomyIdParameter
+          in: path
+          required: true
+          description: ID of the taxonomy
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+  /taxonomies/disable/{taxonomyIdParameter}:
+    get:
+      summary: Disable taxonomy by ID
+      parameters:
+        - name: taxonomyIdParameter
+          in: path
+          required: true
+          description: ID of the taxonomy
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+  /taxonomies/taxonomy_tags/{taxonomyIdParameter}:
+    get:
+      summary: Get tags for a specific taxonomy
+      parameters:
+        - name: taxonomyIdParameter
+          in: path
+          required: true
+          description: ID of the taxonomy
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+  /tags:
+    get:
+      summary: Get all tags
+      responses:
+        '200':
+          description: Successful operation
+  /tags/view/{tagId}:
+    get:
+      summary: View tag by ID
+      parameters:
+        - name: tagId
+          in: path
+          required: true
+          description: ID of the tag
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+  /tags/search/{tagSearchTerm}:
+    get:
+      summary: Search for tags by term
+      parameters:
+        - name: tagSearchTerm
+          in: path
+          required: true
+          description: Term to search for in tags
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+  /feeds:
+    get:
+      summary: Get all feeds
+      responses:
+        '200':
+          description: Successful operation
+  /feeds/view/{feedId}:
+    get:
+      summary: View feed by ID
+      parameters:
+        - name: feedId
+          in: path
+          required: true
+          description: ID of the feed
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+  /feeds/enable/{feedId}:
+    get:
+      summary: Enable feed by ID
+      parameters:
+        - name: feedId
+          in: path
+          required: true
+          description: ID of the feed
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+  /feeds/disable/{feedId}:
+    get:
+      summary: Disable feed by ID
+      parameters:
+        - name: feedId
+          in: path
+          required: true
+          description: ID of the feed
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+  /feeds/cacheFeeds/{cacheFeedsScope}:
+    get:
+      summary: Cache feeds for a specified scope
+      parameters:
+        - name: cacheFeedsScope
+          in: path
+          required: true
+          description: Scope for caching feeds
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+  /feeds/fetchFromFeed/{feedId}:
+    get:
+      summary: Fetch data from a specific feed
+      parameters:
+        - name: feedId
+          in: path
+          required: true
+          description: ID of the feed
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+  /feeds/fetchFromAllFeeds:
+    get:
+      summary: Fetch data from all feeds
+      responses:
+        '200':
+          description: Successful operation
+  /sightings/index/{eventId}:
+    get:
+      summary: Get sightings index by event ID
+      parameters:
+        - name: eventId
+          in: path
+          required: true
+          description: ID of the event
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+  /objects/restsearch:
+    get:
+      summary: Search for objects
+      responses:
+        '200':
+          description: Successful operation
+  /objects/view/{objectId}:
+    get:
+      summary: View object by ID
+      parameters:
+        - name: objectId
+          in: path
+          required: true
+          description: ID of the object
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+  /noticelists:
+    get:
+      summary: Get all notice lists
+      responses:
+        '200':
+          description: Successful operation
+  /noticelists/view/{noticelistId}:
+    get:
+      summary: View notice list by ID
+      parameters:
+        - name: noticelistId
+          in: path
+          required: true
+          description: ID of the notice list
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+  /noticelists/toggleEnable/{noticelistId}:
+    get:
+      summary: Toggle enable/disable notice list by ID
+      parameters:
+        - name: noticelistId
+          in: path
+          required: true
+          description: ID of the notice list
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+  /warninglists:
+    get:
+      summary: Get all warning lists
+      responses:
+        '200':
+          description: Successful operation
+  /warninglists/view/{warninglistId}:
+    get:
+      summary: View warning list by ID
+      parameters:
+        - name: warninglistId
+          in: path
+          required: true
+          description: ID of the warning list
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+  /warninglists/checkValue:
+    get:
+      summary: Check value against warning lists
+      responses:
+        '200':
+          description: Successful operation
+
+      security:
+        - APIKeyAuth: []  # Use API key authentication for this endpoint
+security:
+  - APIKeyAuth: [] 
+components:
+  securitySchemes:
+    APIKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
