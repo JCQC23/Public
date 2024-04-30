@@ -1,0 +1,30 @@
+openapi: 3.0.0
+info:
+  title: Get SCP Response Code
+  version: 1.0.0
+  description: |
+    Get SCP Response Code
+servers:
+  - url: https://qc-scp-fa.azurewebsites.net
+paths:
+  /api/query/device/devices:
+    get:
+      summary: Get index of analyst data by type
+      parameters:
+        - name: Code
+          in: query
+          required: true
+          description: Device code
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+      security:
+        - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
